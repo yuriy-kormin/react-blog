@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from "react";
+import PostItem from "./components/PostItem";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import PostList from "./components/PostList";
 
 function App() {
-  return (
+    const [posts,setPosts] = useState([
+        {id:1,name:'post 1',body:'body 1'},
+        {id:2,name:'post 2',body:'body 2'},
+        {id:3,name:'post 3',body:'body 3'},
+        {id:4,name:'post 4',body:'body 4'},
+    ])
+    return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <PostList posts={posts} name="Group 1"/>
     </div>
   );
 }
+// https://www.youtube.com/watch?v=GNrdg3PzpJQ
 
 export default App;
