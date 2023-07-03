@@ -1,9 +1,9 @@
 import React from 'react';
 import {Button} from "react-bootstrap";
 
-const MyButton = ({children, classes, ...props}) => {
+const MyButton = ({children, variant, ...props}) => {
     return (
-        <Button {...props} className={classes} type="submit">{children}</Button>
+        <Button {...props} variant={variant}>{children}</Button>
         );
 };
 

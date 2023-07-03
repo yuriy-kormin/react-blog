@@ -1,5 +1,6 @@
 import React from 'react';
-import {Button, Card, Container, ListGroupItem, Row} from 'react-bootstrap';
+import {ListGroupItem} from 'react-bootstrap';
+import MyButton from "./UI/button/MyButton";
 
 
 const PostItem = ({post}) => {
@@ -10,7 +11,7 @@ const PostItem = ({post}) => {
                 {post.body}
             </div>
             <div>
-                <Button variant="danger">Удалить</Button>
+                <MyButton variant={"danger"}>Удалить</MyButton>
             </div>
         </ListGroupItem>
     )
