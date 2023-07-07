@@ -3,7 +3,7 @@ import {ListGroupItem} from 'react-bootstrap';
 import MyButton from "./UI/button/MyButton";
 
 
-const PostItem = ({post}) => {
+const PostItem = ({post,remove}) => {
     return (
         <ListGroupItem className="d-flex w-100 justify-content-between align-items-start">
             <div>
@@ -11,7 +11,8 @@ const PostItem = ({post}) => {
                 {post.body}
             </div>
             <div>
-                <MyButton variant={"danger"}>Удалить</MyButton>
+                <MyButton onClick={() =>remove(post.id)}
+                    variant={"danger"}>Удалить</MyButton>
             </div>
         </ListGroupItem>
     )

@@ -6,11 +6,12 @@ const MyInput = ({
                      classes,
                      placeholder,
                      label,
+                     value,
                      ...props}) => {
     return (
-        <Form.Group {...props} className={classes}>
-            <Form.Label>{label}</Form.Label>
-            <Form.Control type="text" placeholder={placeholder}/>
+        <Form.Group className={classes}>
+            {label && <Form.Label>{label}</Form.Label>}
+            <Form.Control type="text" value={value} placeholder={placeholder} {...props}/>
         </Form.Group>
     );
 };
