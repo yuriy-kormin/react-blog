@@ -5,6 +5,8 @@ import {postFixture} from "./components/postlist_data";
 import PostAddForm from "./components/PostAddForm";
 import {Alert, Col, Container, Row} from "react-bootstrap";
 import PostFilter from "./components/PostFilter";
+import MyModal from "./components/UI/MyModals/MyModal";
+import MyButton from "./components/UI/button/MyButton";
 
 function App() {
     const [posts,setPosts] = useState(
@@ -34,11 +36,15 @@ function App() {
         setFilter({sort:sort,qs:qs})
     }
 
+    const [showModal,setShowModal] =useState(false)
+    console.log('showModal',showModal);
     return (
     <div className="App">
-        <PostAddForm classes={'m-3'} setposts={setPosts} posts={posts}/>
-        <hr className="my-4"></hr>
-        <PostFilter filter={filter} processFilter={processFilter}></PostFilter>
+        <PostFilter
+            filter={filter} processFilter={processFilter}
+            showModal={showModal} setShowModal={setShowModal}
+            posts={posts} setPosts={setPosts}
+        ></PostFilter>
         <hr className="my-4"></hr>
         <PostList posts={posts} remove={removePost} name="Group 1"/>
     </div>

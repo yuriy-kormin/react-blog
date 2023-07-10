@@ -3,7 +3,7 @@ import MyInput from "./UI/input/MyInput";
 import MyButton from "./UI/button/MyButton";
 import {Form} from "react-bootstrap";
 
-const PostAddForm = ({classes,setposts,posts}) => {
+const PostAddForm = ({classes,setposts,posts,setShowModal}) => {
     const [post,setPost] = useState({name:'',body:''})
 
     const addNewPost = (e) => {
@@ -11,6 +11,7 @@ const PostAddForm = ({classes,setposts,posts}) => {
         const maxId = posts.reduce((max, obj) => (obj.id > max ? obj.id : max), 0) +1;
         setposts([...posts,{...post,id:maxId}]);
         setPost({name:'',body: ''});
+        setShowModal(false)
     }
 
     return (
