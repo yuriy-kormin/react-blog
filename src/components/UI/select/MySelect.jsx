@@ -1,11 +1,11 @@
 import React from 'react';
 import {FormSelect} from "react-bootstrap";
 
-const MySelect = ({values,defaultValue,current,onchange}) => {
+const MySelect = ({values,defaultValue,current,onChange}) => {
     return (
         <FormSelect
             className={"form-control"}
-            onChange={e=>onchange(e.target.value)}
+            onChange={e=>onChange(e.target.value)}
             value={current}
         >
             <option value={' '} disabled>{defaultValue}</option>
