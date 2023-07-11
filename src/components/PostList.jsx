@@ -6,15 +6,11 @@ const PostList = ({posts,name,remove}) => {
     if (posts.filter(post=>{return !post.is_hidden}).length === 0) {
         return (<Alert variant={'info'}>Нету постов</Alert>)
     }
-    // { posts.filter(post=>{return !post.is_hidden}).length === 0
-    //     ? <Alert variant={'info'}>Нету постов</Alert>
-    //     : <PostList posts={posts} remove={removePost} name="Group 1"/>
-    // }
 
     return (
         <div>
-            <div className="h2">{name}</div>
-            <ListGroup className={"form-control px-3"}>
+            <div className="h2 px-3">{name}</div>
+            <ListGroup className={"form-control px-5"}>
                 {posts.filter(post =>{return !post['is_hidden']}).map(post =>
                     <PostItem post={post} remove={remove} key={post.id}/>
                 )}

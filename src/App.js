@@ -2,11 +2,7 @@ import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PostList from "./components/PostList";
 import {postFixture} from "./components/postlist_data";
-import PostAddForm from "./components/PostAddForm";
-import {Alert, Col, Container, Row} from "react-bootstrap";
 import PostFilter from "./components/PostFilter";
-import MyModal from "./components/UI/MyModals/MyModal";
-import MyButton from "./components/UI/button/MyButton";
 
 function App() {
     const [posts,setPosts] = useState(
@@ -37,7 +33,6 @@ function App() {
     }
 
     const [showModal,setShowModal] =useState(false)
-    console.log('showModal',showModal);
     return (
     <div className="App">
         <PostFilter
