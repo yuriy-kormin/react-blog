@@ -1,8 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Alert, ListGroup} from 'react-bootstrap';
 import PostItem from "./PostItem";
+import axios from "axios";
 
 const PostList = ({posts,name,setPosts}) => {
+    useEffect( () =>{
+        async function fetchPosts(){
+            const response = await axios.get('https://jsonplaceholder.typicode.com/posts')
+
+            setPosts(response.data.map(post => {
+                return {
+                    id:post.id,
+                    name:post.title,
+                    body:post.body,
+                    is_hidden:false,
+                }
+            }))
+        }
+        fetchPosts();
+    },[])
+
     if (posts.filter(post=>{return !post.is_hidden}).length === 0) {
         return (<Alert variant={'info'}>Нету постов</Alert>)
     }

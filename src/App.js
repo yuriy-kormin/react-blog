@@ -5,11 +5,11 @@ import {postFixture} from "./components/postlist_data";
 import PostFilter from "./components/PostFilter";
 
 function App() {
-    const [posts,setPosts] = useState(
-        postFixture.map(post=>{
-            return {...post,is_hidden:false}
-        })
-    );
+    const [posts,setPosts] = useState([]);
+        // postFixture.map(post=>{
+        //     return {...post,is_hidden:false}
+        // })
+    // );
     const [showModal,setShowModal] =useState(false)
     return (
     <div className="App">

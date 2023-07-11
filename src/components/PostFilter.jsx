@@ -6,12 +6,15 @@ import MyInput from "./UI/input/MyInput";
 import MyButton from "./UI/button/MyButton";
 import PostAddForm from "./PostAddForm";
 import MyModal from "./UI/MyModals/MyModal";
+import axios from "axios";
 
 const PostFilter = ({
                         showModal,setShowModal,
                         posts,setPosts,
 }) => {
     const [filter,setFilter] = useState({sort:'',qs:''})
+
+
     const processFilter = (sort,qs) => {
         if (sort){
             setPosts([...posts].sort((a,b) =>
