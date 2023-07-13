@@ -1,21 +1,18 @@
-import React, {useEffect, useMemo, useState} from "react";
+import React, {useEffect, useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import PostList from "./components/PostList";
 import PostFilter from "./components/PostFilter";
 import PostService from "./API/PostService";
-import {Alert, Pagination, Spinner} from "react-bootstrap";
+import {Alert, Spinner} from "react-bootstrap";
 import {useFetching} from "./components/hooks/useFetching";
-import {getPageCount, pagesArray} from "./utils/pages";
+import {getPageCount} from "./utils/pages";
+import MyPagination from "./components/UI/pagination/MyPagination";
 
 function App() {
     const [posts,setPosts] = useState([]);
     const [showModal,setShowModal] =useState(false)
     const [paginationInfo,setPaginationInfo]=useState(
 {totalPages:0, limit:10, page:1}
-    )
-    // const pages = pagesArray(paginationInfo.totalPages)
-    const pages = useMemo(() => {return pagesArray(paginationInfo.totalPages)},
-        [paginationInfo.totalPages,]
     )
     const [fetchPosts,
         isPostLoading,
@@ -36,7 +33,6 @@ function App() {
             }
         }))
     })
-    console.log(pages)
     useEffect( () =>{fetchPosts()},[paginationInfo.page])
     return (
     <div className="App">
@@ -53,18 +49,8 @@ function App() {
         {isPostLoading
             ?<Spinner animation="grow" variant="warning"/>
             :(<>
-                    <Pagination className={"d-flex justify-content-center"}>
-                        {pages.map(page => (
-                            <Pagination.Item
-                                key={page}
-                                active={page === paginationInfo.page}
-                                onClick={() => {
-                                    setPaginationInfo({...paginationInfo,page})
-                                }}
-                            >{page}</Pagination.Item>
-                        ))}
-                    </Pagination>
-                    <PostList posts={posts} setPosts={setPosts} name="Group 1"/>
+                <MyPagination paginationInfo={paginationInfo} setPaginationInfo={setPaginationInfo}/>
+                <PostList posts={posts} setPosts={setPosts} name="Group 1"/>
               </>
             )
         }
